@@ -1,0 +1,15 @@
+- name: Use Custom Module
+  hosts: all
+  vars:
+    ansible_shell_type: powershell
+    ansible_shell_executable: powershell.exe
+  tasks:
+    - name: Run custom module
+      service_enum:
+        desired_state: running # Options: running or stopped
+      register: result
+
+
+    - name: Print result
+      debug:
+        var: result.msg 
